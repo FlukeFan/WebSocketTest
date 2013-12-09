@@ -5,6 +5,7 @@
   </Target>
   
   <Target Name="Run" DependsOnTargets="Build">
+    <Exec Command="packages\NUnit.Runners.2.6.3\tools\nunit-console.exe WebSocketTest\bin\Debug\WebSocketTest.exe" />
   </Target>
 
 </Project>
