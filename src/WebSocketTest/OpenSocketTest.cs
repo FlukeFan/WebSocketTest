@@ -8,6 +8,7 @@ namespace WebSocketTest
         [Test]
         public void OpenManyTimes()
         {
+            Server.Start();
         }
     }
 }
