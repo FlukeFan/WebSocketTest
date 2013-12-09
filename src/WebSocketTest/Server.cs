@@ -11,7 +11,7 @@ namespace WebSocketTest
 
         public static void Start()
         {
-            _webSocketServer = new WebSocketServer(8080, IPAddress.Any);
+            _webSocketServer = new WebSocketServer(8090, IPAddress.Any);
             _webSocketServer.TimeOut = TimeSpan.FromMinutes(3);
 
             _webSocketServer.OnConnect = OnConnect;
@@ -23,7 +23,7 @@ namespace WebSocketTest
 
         private static void Write(string context, UserContext user)
         {
-            Console.WriteLine(string.Format("{0} {1} {2}", context, user.ClientAddress, user.Data));
+            Console.WriteLine(string.Format("{0} {1} {2}", context, user.ClientAddress, user.DataFrame));
         }
 
         private static void OnConnect(UserContext user)
@@ -39,6 +39,14 @@ namespace WebSocketTest
         private static void OnReceive(UserContext user)
         {
             Write("OnReceive", user);
+
+            var text = user.DataFrame.ToString();
+
+            if (text == "OPENED")
+            {
+                Console.WriteLine("Sending ...");
+                user.Send("RECEIVED");
+            }
         }
     }
 }

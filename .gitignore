@@ -1,3 +1,4 @@
+src/TestResult.xml
 *.csproj.user
 *.sln.cache
 *.suo
@@ -6,4 +7,3 @@
 [Dd]ebug/
 [Oo]bj/
 [Rr]elease/
-TestResult.xml
